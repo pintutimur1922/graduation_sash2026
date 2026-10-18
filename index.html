@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduation Sash 2026</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #2563eb;
+            --light-blue-bg: #eff6ff;
+            --primary-red: #dc2626;
+            --dark-red: #b91c1c;
+            --dark-text: #1e293b;
+            --light-bg: #f8fafc;
+            --border-color: #cbd5e1;
+            --success-green: #16a34a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 15px;
+            color: var(--dark-text);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
+            border-top: 6px solid var(--primary-blue);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-red);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .option-card {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .option-card:hover {
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-red);
+            background-color: #fef2f2;
+            box-shadow: 0 0 0 1px var(--primary-red);
+        }
+
+        .option-card img {
+            max-width: 100%;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .option-card p {
+            margin: 8px 0 0 0;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary-blue);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: background 0.3s, transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: var(--dark-red);
+        }
+
+        .btn:active {
+            transform: scale(0.99);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+            background: var(--light-blue-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed var(--secondary-blue);
+        }
+
+        .qr-code img {
+            max-width: 230px;
+            border: 3px solid white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .qr-code p {
+            color: var(--primary-blue);
+        }
+
+        /* Floating Cart Popup */
+        .cart-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, 0.3);
+            z-index: 1000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cart-toggle:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+
+        .cart-badge {
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 13px;
+        }
+
+        .cart-popup {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 20px;
+            z-index: 999;
+            display: none;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .cart-popup h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--light-blue-bg);
+            padding-bottom: 10px;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--dark-text);
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 18px;
+            text-align: right;
+            border-top: 2px solid var(--light-blue-bg);
+            padding-top: 10px;
+            margin-top: 10px;
+            color: var(--primary-red);
+        }
+
+        /* Success Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 138, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px 25px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-top: 8px solid var(--success-green);
+        }
+
+        .modal-card h2 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+
+        .modal-card p {
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-toggle" onclick="toggleCart()">
+    🛒 View Cart <span class="cart-badge" id="cart-count">0</span>
+</div>
+
+<div class="cart-popup" id="cart-popup">
+    <h3>Your Order Summary</h3>
+    <div id="cart-items">
+        <p class="cart-item">No items selected yet.</p>
+    </div>
+    <div class="cart-total">Total: RM <span id="cart-total-price">0.00</span></div>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>Graduation Sash 2026</h1>
+    </div>
+
+    <form id="orderForm" onsubmit="submitForm(event)">
+        
+        <!-- SECTION 1: Sash Type -->
+        <div class="section">
+            <h2>1. Choose Sash Type</h2>
+            <div class="options-grid" id="type-options">
+                <div class="option-card" onclick="selectType('Logo Only', 24.90, this)">
+                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/59.png" alt="Logo Only">
+                    <p><strong>Logo Only</strong><br><span style="color: var(--primary-red); font-weight: bold;">RM 24.90</span></p>
+                </div>
+                <div class="option-card" onclick="selectType('Logo + Name + Course', 24.90, this)">
+                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/58.png" alt="Logo + Name + Course">
+                    <p><strong>Logo Uni + Name + Course</strong><br><span style="color: var(--primary-red); font-weight: bold;">RM 24.90</span></p>
+                </div>
+            </div>
+            <input type="hidden" id="selectedType" required>
+            
+            <div class="form-group hidden" id="customDetails">
+                <label for="customText">Enter Details (Uni | Name | Course):</label>
+                <input type="text" id="customText" placeholder="e.g. UiTM | Ahmad | CS240" oninput="updateCart()">
+            </div>
+        </div>
+
+        <!-- SECTION 2: Colors -->
+        <div class="section">
+            <h2>2. Choose Color</h2>
+            <div class="options-grid" id="color-options">
+                <!-- Dynamic color choices -->
+            </div>
+            <input type="hidden" id="selectedColor" required>
+        </div>
+
+        <!-- SECTION 3: Customer Details -->
+        <div class="section">
+            <h2>3. Customer Information</h2>
+            <div class="form-group">
+                <label for="custName">Full Name</label>
+                <input type="text" id="custName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="custPhone">Phone Number</label>
+                <input type="tel" id="custPhone" placeholder="e.g. 0123456789" required>
+            </div>
+            <div class="form-group">
+                <label for="deliveryMethod">Delivery Method</label>
+                <select id="deliveryMethod" onchange="updateCart()" required>
+                    <option value="">-- Select Delivery --</option>
+                    <option value="0">Self Pickup (FREE)</option>
+                    <option value="7">Postage (Semenanjung) - RM 7.00</option>
+                    <option value="11">Postage (Sabah / Sarawak) - RM 11.00</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Payment -->
+        <div class="section">
+            <h2>4. Payment</h2>
+            <div class="qr-code">
+                <p style="margin-top:0; font-weight: 500;">Scan the QR code below to make payment:</p>
+                <img src="https://github.com/pintutimur1922/eduuniversity26/raw/main/unnamed%20(4).jpg" alt="Payment QR Code">
+                <p style="font-size: 18px; font-weight: bold; margin-bottom:0;">
+                    Amount to Pay: <span style="color: var(--primary-red);">RM <span id="payment-amount">0.00</span></span>
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="receiptFile">Upload Payment Receipt</label>
+                <input type="file" id="receiptFile" accept="image/*,.pdf" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">Submit Order</button>
+        <p id="loadingMsg" class="hidden" style="text-align:center; color: var(--primary-red); font-weight:bold; margin-top:15px;">
+            Processing your order... Please wait.
+        </p>
+    </form>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="successModal" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div style="font-size: 50px; margin-bottom: 10px;">🎉</div>
+        <h2>Thank You for Your Order!</h2>
+        <p>Your order for <strong>Graduation Sash 2026</strong> has been received and is being processed. Please join our WhatsApp customer group for important updates on your order tracking and delivery.</p>
+        <a href="https://chat.whatsapp.com/I3Dyrdi1o7X6o52T0X78mw?mode=gi_t" target="_blank" class="btn btn-whatsapp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Join Customer WhatsApp Group
+        </a>
+    </div>
+</div>
+
+<script>
+    const colors = [
+        { name: "White", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/60.png" },
+        { name: "Beauty Pink", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/61.png" },
+        { name: "Red", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/62.png" },
+        { name: "Soft Pink", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/63.png" },
+        { name: "Green", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/64.png" },
+        { name: "Gold", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/65.png" },
+        { name: "Blue", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/66.png" },
+        { name: "Black", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/67.png" }
+    ];
+
+    // Populate colors
+    const colorGrid = document.getElementById('color-options');
+    colors.forEach(color => {
+        const div = document.createElement('div');
+        div.className = 'option-card';
+        div.innerHTML = `<img src="${color.url}" alt="${color.name}"><p><strong>${color.name}</strong></p>`;
+        div.onclick = function() { selectColor(color.name, this); };
+        colorGrid.appendChild(div);
+    });
+
+    let orderState = {
+        type: null,
+        typePrice: 0,
+        customText: "",
+        color: null,
+        deliveryFee: 0,
+        deliveryName: ""
+    };
+
+    function selectType(name, price, element) {
+        document.querySelectorAll('#type-options .option-card').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        document.getElementById('selectedType').value = name;
+        orderState.type = name;
+        orderState.typePrice = price;
+
+        if (name === 'Logo + Name + Course') {
+            document.getElementById('customDetails').classList.remove('hidden');
+            document.getElementById('customText').required = true;
+        } else {
+            document.getElementById('customDetails').classList.add('hidden');
+            document.getElementById('customText').required = false;
+            document.getElementById('customText').value = "";
+        }
+        updateCart();
+    }
+
+    function selectColor(name, element) {
+        document.querySelectorAll('#color-options .option-card').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        document.getElementById('selectedColor').value = name;
+        orderState.color = name;
+        updateCart();
+    }
+
+    function toggleCart() {
+        const cart = document.getElementById('cart-popup');
+        cart.style.display = cart.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function updateCart() {
+        const customText = document.getElementById('customText').value;
+        const delSelect = document.getElementById('deliveryMethod');
+        orderState.deliveryFee = parseFloat(delSelect.value || 0);
+        orderState.deliveryName = delSelect.options[delSelect.selectedIndex]?.text || "";
+
+        let html = '';
+        let total = 0;
+
+        if (orderState.type) {
+            html += `<p class="cart-item"><strong>Type:</strong> ${orderState.type} (RM ${orderState.typePrice.toFixed(2)})</p>`;
+            if (orderState.type === 'Logo + Name + Course' && customText) {
+                html += `<p class="cart-item"><strong>Details:</strong> ${customText}</p>`;
+            }
+            total += orderState.typePrice;
+            document.getElementById('cart-count').innerText = "1";
+        }
+        if (orderState.color) {
+            html += `<p class="cart-item"><strong>Color:</strong> ${orderState.color}</p>`;
+        }
+        if (orderState.deliveryName && delSelect.value !== "") {
+            html += `<p class="cart-item"><strong>Delivery:</strong> ${orderState.deliveryName}</p>`;
+            total += orderState.deliveryFee;
+        }
+
+        if (html === '') html = '<p class="cart-item">No items selected yet.</p>';
+        
+        document.getElementById('cart-items').innerHTML = html;
+        document.getElementById('cart-total-price').innerText = total.toFixed(2);
+        document.getElementById('payment-amount').innerText = total.toFixed(2);
+    }
+
+    function getBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result.split(',')[1]);
+            reader.onerror = error => reject(error);
+        });
+    }
+
+    async function submitForm(e) {
+        e.preventDefault();
+        
+        // GOOGLE APPS SCRIPT WEB APP URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyOf9OYTZHtpGuA9WPZdmYvpqyXEFpxEsWM0GlvFLMyxwrGhi7WfBl8lbev6Eo6epAdtQ/exec"; 
+
+        if (!orderState.type || !orderState.color) {
+            alert("Please select both Sash Type and Color.");
+            return;
+        }
+
+        document.getElementById('submitBtn').classList.add('hidden');
+        document.getElementById('loadingMsg').classList.remove('hidden');
+
+        const fileInput = document.getElementById('receiptFile');
+        const file = fileInput.files[0];
+        const base64File = await getBase64(file);
+
+        const payload = {
+            type: orderState.type,
+            details: document.getElementById('customText').value,
+            color: orderState.color,
+            name: document.getElementById('custName').value,
+            phone: document.getElementById('custPhone').value,
+            delivery: orderState.deliveryName,
+            totalPrice: document.getElementById('cart-total-price').innerText,
+            fileName: file.name,
+            mimeType: file.type,
+            fileData: base64File
+        };
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === 'success') {
+                document.getElementById('loadingMsg').classList.add('hidden');
+                document.getElementById('successModal').classList.remove('hidden');
+            } else {
+                alert("Error submitting order: " + result.message);
+                document.getElementById('submitBtn').classList.remove('hidden');
+                document.getElementById('loadingMsg').classList.add('hidden');
+            }
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("Submission failed. Please check your connection and try again.");
+            document.getElementById('submitBtn').classList.remove('hidden');
+            document.getElementById('loadingMsg').classList.add('hidden');
+        });
+    }
+</script>
+</body>
+</html>
