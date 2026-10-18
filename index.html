@@ -21,7 +21,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light-bg);
             margin: 0;
-            padding: 15px;
+            padding: 20px 15px;
             color: var(--dark-text);
         }
 
@@ -350,9 +350,7 @@
         <!-- SECTION 2: Colors -->
         <div class="section">
             <h2>2. Choose Color</h2>
-            <div class="options-grid" id="color-options">
-                <!-- Dynamic color choices -->
-            </div>
+            <div class="options-grid" id="color-options"></div>
             <input type="hidden" id="selectedColor" required>
         </div>
 
@@ -426,7 +424,6 @@
         { name: "Black", url: "https://github.com/pintutimur1922/Graduation-Sash/raw/main/67.png" }
     ];
 
-    // Populate colors
     const colorGrid = document.getElementById('color-options');
     colors.forEach(color => {
         const div = document.createElement('div');
@@ -436,14 +433,7 @@
         colorGrid.appendChild(div);
     });
 
-    let orderState = {
-        type: null,
-        typePrice: 0,
-        customText: "",
-        color: null,
-        deliveryFee: 0,
-        deliveryName: ""
-    };
+    let orderState = { type: null, typePrice: 0, customText: "", color: null, deliveryFee: 0, deliveryName: "" };
 
     function selectType(name, price, element) {
         document.querySelectorAll('#type-options .option-card').forEach(el => el.classList.remove('selected'));
@@ -520,7 +510,6 @@
     async function submitForm(e) {
         e.preventDefault();
         
-        // GOOGLE APPS SCRIPT WEB APP URL
         const scriptURL = "https://script.google.com/macros/s/AKfycbyOf9OYTZHtpGuA9WPZdmYvpqyXEFpxEsWM0GlvFLMyxwrGhi7WfBl8lbev6Eo6epAdtQ/exec"; 
 
         if (!orderState.type || !orderState.color) {
