@@ -114,17 +114,18 @@
             color: var(--primary-blue);
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 15px;
+            font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--secondary-blue);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
@@ -194,7 +195,6 @@
             color: var(--primary-blue);
         }
 
-        /* Floating Cart Popup */
         .cart-toggle {
             position: fixed;
             bottom: 30px;
@@ -263,7 +263,6 @@
             color: var(--primary-red);
         }
 
-        /* Success Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -303,6 +302,45 @@
             line-height: 1.5;
             margin-bottom: 20px;
         }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-left: 6px solid var(--secondary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .info-box h4 {
+            margin: 15px 0 5px;
+            font-size: 16px;
+            color: var(--dark-text);
+        }
+        
+        .info-box p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #475569;
+        }
     </style>
 </head>
 <body>
@@ -321,7 +359,32 @@
 
 <div class="container">
     <div class="header">
+        <img src="https://raw.githubusercontent.com/pintutimur1922/graduation_sash2026/main/4.jpg" alt="Graduation Sash 2026" class="hero-image" onerror="this.src='https://placehold.co/800x400/eff6ff/1e3a8a?text=Graduation+Sash'">
         <h1>Graduation Sash 2026</h1>
+    </div>
+
+    <div class="info-box">
+        <h3>🎓 GRADUATION SASH – PRODUCTION & DELIVERY INFORMATION</h3>
+        <p>Every Graduation Sash is made with care to ensure the perfect finishing touch for your graduation day!</p>
+        
+        <h4>📌 Production Schedule</h4>
+        <p>Production is carried out every Saturday and Sunday for orders received from Monday to Friday.</p>
+        
+        <h4>📦 Delivery Schedule</h4>
+        <p>All orders will be shipped the following week after the production period.</p>
+        
+        <h4>⚡ Need an Urgent Order?</h4>
+        <p>If you need your Graduation Sash urgently, feel free to contact us directly via WhatsApp to check availability and arrange your order.</p>
+        
+        <h4>🛍️ Purchasing More Than 1 PC?</h4>
+        <p>If you are purchasing more than 1 piece, please contact us directly via WhatsApp before placing your order.</p>
+        
+        <p style="margin-top: 15px;">
+            <a href="https://wa.link/7yivbt" target="_blank" style="color: #16a34a; font-weight: bold; text-decoration: none; font-size: 16px; display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+                WhatsApp: https://wa.link/7yivbt
+            </a>
+        </p>
     </div>
 
     <form id="orderForm" onsubmit="submitForm(event)">
@@ -331,19 +394,19 @@
             <h2>1. Choose Sash Type</h2>
             <div class="options-grid" id="type-options">
                 <div class="option-card" onclick="selectType('Logo Only', 24.90, this)">
-                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/59.png" alt="Logo Only">
+                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/59.png" alt="Logo Only" onerror="this.src='https://placehold.co/200x120/f8fafc/1e3a8a?text=Logo+Only'">
                     <p><strong>Logo Only</strong><br><span style="color: var(--primary-red); font-weight: bold;">RM 24.90</span></p>
                 </div>
                 <div class="option-card" onclick="selectType('Logo + Name + Course', 24.90, this)">
-                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/58.png" alt="Logo + Name + Course">
+                    <img src="https://github.com/pintutimur1922/Graduation-Sash/raw/main/58.png" alt="Logo + Name + Course" onerror="this.src='https://placehold.co/200x120/f8fafc/1e3a8a?text=Logo+%2B+Name'">
                     <p><strong>Logo Uni + Name + Course</strong><br><span style="color: var(--primary-red); font-weight: bold;">RM 24.90</span></p>
                 </div>
             </div>
             <input type="hidden" id="selectedType" required>
             
             <div class="form-group hidden" id="customDetails">
-                <label for="customText">Enter Details (Uni | Name | Course):</label>
-                <input type="text" id="customText" placeholder="e.g. UiTM | Ahmad | CS240" oninput="updateCart()">
+                <label id="customTextLabel" for="customText">Enter Details:</label>
+                <input type="text" id="customText" placeholder="" oninput="updateCart()">
             </div>
         </div>
 
@@ -354,7 +417,7 @@
             <input type="hidden" id="selectedColor" required>
         </div>
 
-        <!-- SECTION 3: Customer Details -->
+        <!-- SECTION 3: Customer Information -->
         <div class="section">
             <h2>3. Customer Information</h2>
             <div class="form-group">
@@ -369,10 +432,14 @@
                 <label for="deliveryMethod">Delivery Method</label>
                 <select id="deliveryMethod" onchange="updateCart()" required>
                     <option value="">-- Select Delivery --</option>
-                    <option value="0">Self Pickup (FREE)</option>
+                    <option value="0">Self Pickup - Tanjong Malim (FREE)</option>
                     <option value="7">Postage (Semenanjung) - RM 7.00</option>
                     <option value="11">Postage (Sabah / Sarawak) - RM 11.00</option>
                 </select>
+            </div>
+            <div class="form-group hidden" id="addressGroup">
+                <label for="custAddress">Shipping Address</label>
+                <textarea id="custAddress" rows="3" placeholder="Enter your full street address, postcode, city, and state"></textarea>
             </div>
         </div>
 
@@ -381,7 +448,7 @@
             <h2>4. Payment</h2>
             <div class="qr-code">
                 <p style="margin-top:0; font-weight: 500;">Scan the QR code below to make payment:</p>
-                <img src="https://github.com/pintutimur1922/eduuniversity26/raw/main/unnamed%20(4).jpg" alt="Payment QR Code">
+                <img src="https://github.com/pintutimur1922/eduuniversity26/raw/main/unnamed%20(4).jpg" alt="Payment QR Code" onerror="this.src='https://placehold.co/230x230/eff6ff/1e3a8a?text=QR+Code'">
                 <p style="font-size: 18px; font-weight: bold; margin-bottom:0;">
                     Amount to Pay: <span style="color: var(--primary-red);">RM <span id="payment-amount">0.00</span></span>
                 </p>
@@ -392,8 +459,10 @@
             </div>
         </div>
 
+        <p id="errorMsg" class="hidden" style="text-align:center; color: var(--primary-red); background: #fef2f2; padding: 10px; border-radius: 6px; border: 1px solid var(--primary-red); margin-top:15px; font-weight: 500;"></p>
+        
         <button type="submit" class="btn" id="submitBtn">Submit Order</button>
-        <p id="loadingMsg" class="hidden" style="text-align:center; color: var(--primary-red); font-weight:bold; margin-top:15px;">
+        <p id="loadingMsg" class="hidden" style="text-align:center; color: var(--primary-blue); font-weight:bold; margin-top:15px;">
             Processing your order... Please wait.
         </p>
     </form>
@@ -428,7 +497,7 @@
     colors.forEach(color => {
         const div = document.createElement('div');
         div.className = 'option-card';
-        div.innerHTML = `<img src="${color.url}" alt="${color.name}"><p><strong>${color.name}</strong></p>`;
+        div.innerHTML = `<img src="${color.url}" alt="${color.name}" onerror="this.src='https://placehold.co/200x120/f8fafc/1e3a8a?text=${color.name}'"><p><strong>${color.name}</strong></p>`;
         div.onclick = function() { selectColor(color.name, this); };
         colorGrid.appendChild(div);
     });
@@ -442,13 +511,24 @@
         orderState.type = name;
         orderState.typePrice = price;
 
+        const customDetails = document.getElementById('customDetails');
+        const customText = document.getElementById('customText');
+        const customTextLabel = document.getElementById('customTextLabel');
+
         if (name === 'Logo + Name + Course') {
-            document.getElementById('customDetails').classList.remove('hidden');
-            document.getElementById('customText').required = true;
+            customDetails.classList.remove('hidden');
+            customText.required = true;
+            customTextLabel.innerText = "Enter Details (Uni | Name | Course):";
+            customText.placeholder = "e.g. UiTM | Ahmad | CS240";
+        } else if (name === 'Logo Only') {
+            customDetails.classList.remove('hidden');
+            customText.required = true;
+            customTextLabel.innerText = "Enter University Name:";
+            customText.placeholder = "e.g. UPSI";
         } else {
-            document.getElementById('customDetails').classList.add('hidden');
-            document.getElementById('customText').required = false;
-            document.getElementById('customText').value = "";
+            customDetails.classList.add('hidden');
+            customText.required = false;
+            customText.value = "";
         }
         updateCart();
     }
@@ -469,16 +549,30 @@
     function updateCart() {
         const customText = document.getElementById('customText').value;
         const delSelect = document.getElementById('deliveryMethod');
+        const addressGroup = document.getElementById('addressGroup');
+        const custAddress = document.getElementById('custAddress');
+
         orderState.deliveryFee = parseFloat(delSelect.value || 0);
         orderState.deliveryName = delSelect.options[delSelect.selectedIndex]?.text || "";
+
+        // Toggle address input based on postage selection
+        if (delSelect.value === "7" || delSelect.value === "11") {
+            addressGroup.classList.remove('hidden');
+            custAddress.required = true;
+        } else {
+            addressGroup.classList.add('hidden');
+            custAddress.required = false;
+            custAddress.value = "";
+        }
 
         let html = '';
         let total = 0;
 
         if (orderState.type) {
             html += `<p class="cart-item"><strong>Type:</strong> ${orderState.type} (RM ${orderState.typePrice.toFixed(2)})</p>`;
-            if (orderState.type === 'Logo + Name + Course' && customText) {
-                html += `<p class="cart-item"><strong>Details:</strong> ${customText}</p>`;
+            if (customText) {
+                let textLabel = orderState.type === 'Logo Only' ? 'University' : 'Details';
+                html += `<p class="cart-item"><strong>${textLabel}:</strong> ${customText}</p>`;
             }
             total += orderState.typePrice;
             document.getElementById('cart-count').innerText = "1";
@@ -507,13 +601,23 @@
         });
     }
 
+    function showError(msg) {
+        const errorEl = document.getElementById('errorMsg');
+        errorEl.innerText = msg;
+        errorEl.classList.remove('hidden');
+        setTimeout(() => {
+            errorEl.classList.add('hidden');
+        }, 5000);
+    }
+
     async function submitForm(e) {
         e.preventDefault();
+        document.getElementById('errorMsg').classList.add('hidden');
         
         const scriptURL = "https://script.google.com/macros/s/AKfycbyOf9OYTZHtpGuA9WPZdmYvpqyXEFpxEsWM0GlvFLMyxwrGhi7WfBl8lbev6Eo6epAdtQ/exec"; 
 
         if (!orderState.type || !orderState.color) {
-            alert("Please select both Sash Type and Color.");
+            showError("Please select both Sash Type and Color.");
             return;
         }
 
@@ -522,42 +626,50 @@
 
         const fileInput = document.getElementById('receiptFile');
         const file = fileInput.files[0];
-        const base64File = await getBase64(file);
+        
+        try {
+            const base64File = await getBase64(file);
 
-        const payload = {
-            type: orderState.type,
-            details: document.getElementById('customText').value,
-            color: orderState.color,
-            name: document.getElementById('custName').value,
-            phone: document.getElementById('custPhone').value,
-            delivery: orderState.deliveryName,
-            totalPrice: document.getElementById('cart-total-price').innerText,
-            fileName: file.name,
-            mimeType: file.type,
-            fileData: base64File
-        };
+            const payload = {
+                type: orderState.type,
+                details: document.getElementById('customText').value,
+                color: orderState.color,
+                name: document.getElementById('custName').value,
+                phone: document.getElementById('custPhone').value,
+                delivery: orderState.deliveryName,
+                address: document.getElementById('custAddress').value || "Self Pickup - Tanjong Malim",
+                totalPrice: document.getElementById('cart-total-price').innerText,
+                fileName: file.name,
+                mimeType: file.type,
+                fileData: base64File
+            };
 
-        fetch(scriptURL, {
-            method: 'POST',
-            body: JSON.stringify(payload)
-        })
-        .then(response => response.json())
-        .then(result => {
-            if (result.status === 'success') {
-                document.getElementById('loadingMsg').classList.add('hidden');
-                document.getElementById('successModal').classList.remove('hidden');
-            } else {
-                alert("Error submitting order: " + result.message);
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success') {
+                    document.getElementById('loadingMsg').classList.add('hidden');
+                    document.getElementById('successModal').classList.remove('hidden');
+                } else {
+                    showError("Error submitting order: " + result.message);
+                    document.getElementById('submitBtn').classList.remove('hidden');
+                    document.getElementById('loadingMsg').classList.add('hidden');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                showError("Submission failed. Please check your connection and try again.");
                 document.getElementById('submitBtn').classList.remove('hidden');
                 document.getElementById('loadingMsg').classList.add('hidden');
-            }
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            alert("Submission failed. Please check your connection and try again.");
+            });
+        } catch(error) {
+            showError("Error processing file. Please try again.");
             document.getElementById('submitBtn').classList.remove('hidden');
             document.getElementById('loadingMsg').classList.add('hidden');
-        });
+        }
     }
 </script>
 </body>
